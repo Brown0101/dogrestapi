@@ -28,11 +28,11 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         return new ApiInfo(
                 "Location API",
-                "This API returns a list of airport locations.",
+                "This API returns a list of dogs.",
                 "1.0",
-                "http://www.udacity.com/tos",
-                new Contact("Kesha Williams", "www.udacity.com", "myeaddress@udacity.com"),
-                "License of API", "http://www.udacity.com/license", Collections.emptyList());
+                "http://www.dontasweb.com/tos",
+                new Contact("Dwayne Brown", "www.dontasweb.com", "dwayne@dontasweb.com"),
+                "License of API", "http://www.dontasweb.com/license", Collections.emptyList());
     }
 
 }
