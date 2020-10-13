@@ -11,6 +11,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.List;
+
 import static org.mockito.Mockito.verify;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -28,11 +30,37 @@ public class DogControllerUnitTest {
 
     @Test
     public void retrieveDogs() throws Exception {
-        mockMvc.perform(get("/dogs/"))
+        mockMvc.perform(get("/public/dogs/"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(content().json("[]"));
 
         verify(dogService, times(1)).retrieveDogs();
+    }
+
+    @Test
+    public void retrieveDogBreed() throws Exception {
+        mockMvc.perform(get("/public/dogs/breed"))
+                .andExpect(status().isOk());
+
+        verify(dogService, times(1)).retrieveDogBreed();
+    }
+
+    @Test
+    public void retrieveDogBreedById() throws Exception {
+        Long id = 3L;
+
+        mockMvc.perform(get("/public/"+ id + "/breed/"))
+                .andExpect(status().isOk());
+
+        verify(dogService, times(1)).retrieveDogBreedById(id);
+    }
+
+    @Test
+    public void retrieveDogNames() throws Exception {
+        mockMvc.perform(get("/public/dogs/name"))
+                .andExpect(status().isOk());
+
+        verify(dogService, times(1)).retrieveDogNames();
     }
 }
